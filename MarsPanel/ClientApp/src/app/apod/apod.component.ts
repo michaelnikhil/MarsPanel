@@ -8,17 +8,17 @@ import { IApod } from './apod';
   templateUrl: './apod.component.html',
   styleUrls: ['./apod.component.css']
 })
-export class ApodComponent implements OnInit {
+export class ApodComponent implements OnInit, OnDestroy {
 
   pageTitle = 'Picture of the Day';
-  apod!: IApod[];
-  sub: Subscription | undefined ;
+  apod!: IApod;
+  private _subscription: Subscription = new Subscription;
   errorMessage = '';
 
   constructor(private apodService: ApodService) { }
 
   ngOnInit(): void {
-    this.sub = this.apodService.get().subscribe(
+    this._subscription = this.apodService.get().subscribe(
       {
         next: Apod => this.apod = Apod,
         error: error => this.errorMessage = error
@@ -27,8 +27,8 @@ export class ApodComponent implements OnInit {
     console.log('apod component on init');
   }
 
-  // ngOnDestroy(): void {
-  //   this.sub.unsubscribe();
-  // }
+   ngOnDestroy(): void {
+     this._subscription.unsubscribe();
+   }
 
 }

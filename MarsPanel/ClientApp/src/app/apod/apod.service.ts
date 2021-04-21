@@ -12,8 +12,8 @@ export class ApodService {
 
   constructor(private http: HttpClient) { }
 
-  public get(): Observable<IApod[]> {
-    return this.http.get<IApod[]>(this.apiBaseUrl).pipe(
+  public get(): Observable<IApod> {
+    return this.http.get<IApod>(this.apiBaseUrl).pipe(
       tap(out => console.log('Apod = ' + JSON.stringify(out))),
       catchError(this.handleError)
     );

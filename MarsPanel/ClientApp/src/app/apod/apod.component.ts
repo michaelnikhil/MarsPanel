@@ -12,6 +12,7 @@ export class ApodComponent implements OnInit, OnDestroy {
 
   pageTitle = 'Picture of the Day';
   apod!: IApod;
+
   private _subscription: Subscription = new Subscription;
   errorMessage = '';
 
@@ -25,6 +26,7 @@ export class ApodComponent implements OnInit, OnDestroy {
       }
     );
     console.log('apod component on init');
+
   }
 
    ngOnDestroy(): void {

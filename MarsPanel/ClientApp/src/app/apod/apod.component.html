@@ -12,25 +12,25 @@
       </thead>
       <tbody>
         <tr >
-          <td>{{ apod.date }}</td>
+          <!-- <td>{{ apod.date }}</td>
           <td>{{ apod.explanation }}</td>
           <td>{{ apod.media_type}}</td>
           <td>{{ apod.service_version}}</td>
           <td>{{ apod.title}}</td>
-          <td>{{ apod.url}}</td>     
+          <td>{{ apod.url}}</td>      -->
         </tr>
       </tbody>
     </table>
 </div>
 
-<div class="card">
+<!-- <div class="card">
   <div class="card-header">
     {{pageTitle}}
   </div>
   <div class="card-body">
     <div class="container-fluid">
       <div class="text-center">
-        <div *ngId="apod.media_type == 'image'">
+        <div *ngIf="apod.media_type == 'image'">
           <img src=apod.url 
               class="img-responsive center-block"
               style="max-height:300px;padding-bottom:50px" />
@@ -48,4 +48,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

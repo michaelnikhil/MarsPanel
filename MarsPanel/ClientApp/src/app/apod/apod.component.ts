@@ -8,7 +8,7 @@ import { IApod } from './apod';
   templateUrl: './apod.component.html',
   styleUrls: ['./apod.component.css']
 })
-export class ApodComponent implements OnInit, OnDestroy {
+export class ApodComponent implements OnInit {
 
   pageTitle = 'Picture of the Day';
   apod!: IApod[];
@@ -27,8 +27,8 @@ export class ApodComponent implements OnInit, OnDestroy {
     console.log('apod component on init');
   }
 
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
-  }
+  // ngOnDestroy(): void {
+  //   this.sub.unsubscribe();
+  // }
 
 }

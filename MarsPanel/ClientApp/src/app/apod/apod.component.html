@@ -5,14 +5,12 @@
   <div class="card-body">
     <div class="container-fluid">
       <div class="text-center">
-        <div *ngIf="apod.media_type=='image'; else video">
+        <div *ngIf="apod.media_type=='image'">
           <img [src]="apod.url" 
               class="img-responsive center-block"
               style="max-height:500px;padding-bottom:50px" />
         </div>
-        <div #video>
-          If isValid is true
-        </div>
+
 
       </div>
       <p class="card-text">{{apod.explanation}}</p>
@@ -20,3 +18,5 @@
     </div>
   </div>
 </div>
+<mat-datepicker-toggle></mat-datepicker-toggle>
+<mat-datepicker #picker></mat-datepicker>

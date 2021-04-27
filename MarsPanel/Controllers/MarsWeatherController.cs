@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using MarsPanel.Models;
+using MarsPanel.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace MarsPanel.Controllers
 {
@@ -10,17 +12,17 @@ namespace MarsPanel.Controllers
     public class MarsWeatherController : Controller
     {
         private readonly IDataService _dataService;
-
-        public MarsWeatherController(IDataService dataService)
+        private readonly EndpointsSettings _endpointsSettings;
+        public MarsWeatherController(IDataService dataService, IOptions<EndpointsSettings> endpointsSettings)
         {
             _dataService = dataService;
+            _endpointsSettings = endpointsSettings.Value;
         }
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            Dictionary<string, string> parameters = new Dictionary<string, string> {{"feedtype","json"},{"ver","1.0"}};
-            string result = await _dataService.GetObject("insight_weather/",parameters );
+            string result = await _dataService.GetObject(_endpointsSettings.Insight);
             List<JSO> list_jso = MarsWeatherDeserialize.Process(result);
             return Ok(list_jso);
         }

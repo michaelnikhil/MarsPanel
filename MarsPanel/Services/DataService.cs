@@ -1,6 +1,7 @@
 ﻿using RestSharp;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using MarsPanel.Configuration;
 
 namespace MarsPanel.Services
 {
@@ -12,13 +13,13 @@ namespace MarsPanel.Services
             _restClient = restClient;
         }
 
-        public async Task<string> GetObject(string endpoint, Dictionary<string, string> parameters = null)
+        public async Task<string> GetObject(Endpoint endpoint)
         {
             string result = string.Empty ;
 
-            RestRequest restRequest = new RestRequest(endpoint, DataFormat.Json);
-            if (parameters != null){
-                foreach (var item in parameters)
+            RestRequest restRequest = new RestRequest(endpoint.baseEndPoint, DataFormat.Json);
+            if (endpoint.parameters != null){
+                foreach (var item in endpoint.parameters)
                 {
                     restRequest.AddParameter(item.Key,item.Value);
                 }

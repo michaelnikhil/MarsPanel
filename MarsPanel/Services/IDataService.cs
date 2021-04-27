@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
-using System.Collections.Generic;
+using MarsPanel.Configuration;
 
 namespace MarsPanel.Services
 {
     public interface IDataService
     {
-        Task<string> GetObject(string endpoint, Dictionary<string, string> parameters = null );
+        Task<string> GetObject(Endpoint endpoint);
     }
 }

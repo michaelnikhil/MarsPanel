@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RestSharp;
 using System;
+using MarsPanel.Configuration;
 
 namespace MarsPanel
 {
@@ -26,6 +27,8 @@ namespace MarsPanel
             services.AddTransient<IRestClient, HttpClient>(context => 
                 new HttpClient( new Uri(Configuration["rootUrl"]), 
                 Configuration["ApiKey"]));
+
+            services.AddOptions().Configure<EndpointsSettings>(Configuration.GetSection("endpoints"));
             services.AddTransient<IDataService, DataService>();
             services.AddControllers().AddNewtonsoftJson();
             // In production, the Angular files will be served from this directory

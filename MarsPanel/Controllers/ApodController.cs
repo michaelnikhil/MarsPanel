@@ -1,6 +1,7 @@
 ﻿using MarsPanel.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using MarsPanel.Models;
 
 namespace MarsPanel.Controllers
 {

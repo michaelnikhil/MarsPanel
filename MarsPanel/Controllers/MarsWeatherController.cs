@@ -2,6 +2,7 @@ using MarsPanel.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using MarsPanel.Models;
 
 namespace MarsPanel.Controllers
 {
@@ -20,8 +21,8 @@ namespace MarsPanel.Controllers
         {
             Dictionary<string, string> parameters = new Dictionary<string, string> {{"feedtype","json"},{"ver","1.0"}};
             string result = await _dataService.GetObject("insight_weather/",parameters );
-            Apod apod = ApodDeserialize.Process(result);
-            return Ok(apod);
+            List<JSO> list_jso = MarsWeatherDeserialize.Process(result);
+            return Ok(list_jso);
         }
     }
 }

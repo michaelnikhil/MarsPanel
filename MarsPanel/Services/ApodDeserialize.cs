@@ -1,5 +1,5 @@
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using MarsPanel.Models;
 public static class ApodDeserialize {
 
     public static Apod Process(string json){

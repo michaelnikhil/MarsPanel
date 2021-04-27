@@ -9,6 +9,9 @@ import { ApodComponent } from './apod/apod.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePickerComponent } from './apod/date-picker/date-picker.component';
 import { AngularMaterialModule } from './shared/angular-material.module';
+import { ChartsModule } from 'ng2-charts';
+import { InsightWeatherComponent } from './insight-weather/insight-weather.component';
+import { LineChartComponent } from './insight-weather/line-chart/line-chart.component';
 
 
 @NgModule({
@@ -16,7 +19,9 @@ import { AngularMaterialModule } from './shared/angular-material.module';
     AppComponent,
     HomeComponent,
     ApodComponent,
-    DatePickerComponent
+    DatePickerComponent,
+    InsightWeatherComponent,
+    LineChartComponent
   ],
   imports: [
     BrowserModule,
@@ -24,10 +29,12 @@ import { AngularMaterialModule } from './shared/angular-material.module';
     HttpClientModule,
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
-      { path: 'apod', component: ApodComponent }
+      { path: 'apod', component: ApodComponent },
+      { path: 'insight-weather', component: InsightWeatherComponent },
     ]),
     BrowserAnimationsModule,
     AngularMaterialModule,
+    ChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,10 +1,9 @@
 using MarsPanel.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using System.Collections.Generic;
-using MarsPanel.Models;
 using MarsPanel.Configuration;
 using Microsoft.Extensions.Options;
+using MarsPanel.DataTransferObjects;
 
 namespace MarsPanel.Controllers
 {
@@ -23,8 +22,8 @@ namespace MarsPanel.Controllers
         public async Task<IActionResult> Index()
         {
             string result = await _dataService.GetObject(_endpointsSettings.Insight);
-            List<JSO> list_jso = MarsWeatherDeserialize.Process(result);
-            return Ok(list_jso);
+            Pressure pressure_dataset = MarsWeatherDeserialize.Process(result);
+            return Ok(pressure_dataset);
         }
     }
 }

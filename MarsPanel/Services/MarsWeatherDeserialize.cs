@@ -1,21 +1,23 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
-
+using MarsPanel.DataTransferObjects;
 using MarsPanel.Models;
+using System;
 public static class MarsWeatherDeserialize {
 
-    public static List<JSO> Process(string json){
+    public static Pressure Process(string json){
+        Pressure result = new Pressure {};
 
-        List<JSO> result = new List<JSO> {};
+        List<JSO> list_jsol = new List<JSO> {};
 
         if (!string.IsNullOrEmpty(json)){
             JObject responseObject = JObject.Parse(json);
 
             List<string> sol_keys = get_sol_keys(responseObject);
-            result = get_JSO(responseObject,sol_keys);
+            list_jsol = get_JSO(responseObject,sol_keys);
+            result = PressureTimeSeries(sol_keys,list_jsol);
         }
-
         return result;
     }
 
@@ -40,6 +42,27 @@ public static class MarsWeatherDeserialize {
             {   
                 result.Add(jobject[sol].ToObject<JSO>());
             }
+        return result;
+    }
+
+    private static Pressure PressureTimeSeries(List<string> sol_keys, List<JSO> list_jso){
+        Pressure result = new Pressure {};
+
+        foreach (JSO item in list_jso)
+        {
+            result.av.Add(item.pre.av);
+            result.ct.Add(item.pre.ct);
+            result.mn.Add(item.pre.mn);
+            result.mx.Add(item.pre.mx);           
+        }
+
+        foreach (string item in sol_keys)
+        {
+            int tmp= Int32.Parse(item);
+            result.sol.Add(Int32.Parse(item));
+        }
+
+
         return result;
     }
 }

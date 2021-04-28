@@ -9,10 +9,9 @@ import { ApodComponent } from './apod/apod.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePickerComponent } from './apod/date-picker/date-picker.component';
 import { AngularMaterialModule } from './shared/angular-material.module';
-import { ChartsModule } from 'ng2-charts';
 import { InsightWeatherComponent } from './insight-weather/insight-weather.component';
 import { LineChartComponent } from './insight-weather/line-chart/line-chart.component';
-
+import { HighchartsChartModule } from 'highcharts-angular';
 
 @NgModule({
   declarations: [
@@ -34,7 +33,7 @@ import { LineChartComponent } from './insight-weather/line-chart/line-chart.comp
     ]),
     BrowserAnimationsModule,
     AngularMaterialModule,
-    ChartsModule,
+    HighchartsChartModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

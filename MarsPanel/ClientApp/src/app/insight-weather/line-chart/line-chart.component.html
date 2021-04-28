@@ -1,13 +1,7 @@
-<div class="chart-wrapper">
-    <p>it works</p>
-    <canvas baseChart 
-        [datasets]="lineChartData" 
-        [labels]="lineChartLabels" 
-        [options]="lineChartOptions"
-        [colors]="lineChartColors" 
-        [legend]="lineChartLegend" 
-        [chartType]='lineChartType' 
-        [plugins]="lineChartPlugins">
-    </canvas>
-</div>
+<highcharts-chart 
+  [Highcharts]="Highcharts"
+  [options]="chartOptions"
+
+  style="width: 100%; height: 400px; display: block;"
+></highcharts-chart>
 

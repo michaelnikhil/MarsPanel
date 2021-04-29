@@ -16,6 +16,7 @@ export class InsightWeatherComponent implements OnInit, OnDestroy {
   public pressureData: XYData = {
     dataPoints: [[5, 2], [6, 3], [8, 2]]
    };
+   public titlePressureChart = 'Pressure chart';
 
 
   private _subscription: Subscription = new Subscription;

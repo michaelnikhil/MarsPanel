@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePickerComponent } from './apod/date-picker/date-picker.component';
 import { AngularMaterialModule } from './shared/angular-material.module';
 import { InsightWeatherComponent } from './insight-weather/insight-weather.component';
-import { LineChartComponent } from './insight-weather/line-chart/line-chart.component';
+import { LineChartComponent } from './shared/line-chart/line-chart.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 
 @NgModule({

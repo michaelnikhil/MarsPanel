@@ -2,7 +2,8 @@ import { XYData } from './../shared/chart-widget.model';
 import { IPressure } from './weather';
 import { InsightWeatherService } from './insight-weather.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-insight-weather',
@@ -12,28 +13,30 @@ import { Subscription } from 'rxjs';
 export class InsightWeatherComponent implements OnInit, OnDestroy {
   
   pageTitle = 'Weather on Mars (Insight probe)';
-  pressure!: IPressure;
-  public pressureData: XYData = {
-    dataPoints: [[5, 2], [6, 3], [8, 2]]
-   };
-   public titlePressureChart = 'Pressure chart';
-
-
-  private _subscription: Subscription = new Subscription;
+  public pressure$: any;
   errorMessage = '';
+  // public pressureData: XYData = {
+  //   dataPoints: [[5, 2], [6, 3], [8, 2]]
+  //  };
+  public titlePressureChart = 'Pressure chart';
+  pressure_timeseries_av! : XYData;
+  public tempPressure!: IPressure;
+
+  _subscription!: Subscription;
 
   constructor(private insightWeatherService : InsightWeatherService) { }
 
   ngOnInit(): void {
     this._subscription = this.insightWeatherService.get().subscribe(
       {
-        next: Pressure => this.pressure = Pressure,
-        error: error => this.errorMessage = error
+        next: weather => {
+          this.pressure$ = weather;
+          //this.pressure_timeseries_av = weather.pressure_timeseries_av;
+          console.log('subscrition val ' + JSON.stringify(this.pressure_timeseries_av));
+        },
+        error: err => this.errorMessage = err
       }
     );
-    console.log('pressure component on init');
-    this.pressureData.dataPoints = [[5, 2], [6, 3], [8, 2]];
-    console.log('pressure data = ' + this.pressureData.dataPoints);
   }
 
   ngOnDestroy(): void {

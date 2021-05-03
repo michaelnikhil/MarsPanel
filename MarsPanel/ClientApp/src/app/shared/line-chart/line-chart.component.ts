@@ -9,17 +9,17 @@ import * as Highcharts from 'highcharts';
 })
 
 export class LineChartComponent implements OnInit {
-  //@Input() public data: XYData = {dataPoints : [[5, 2], [6, 3], [8, 2]]};
+  @Input() public data: XYData = {dataPoints : [[5, 2], [6, 3], [8, 2]]};
   @Input()
   public chartTitle!: string;
   @Input()
-  public data!: XYData;
+  //public data!: XYData;
 
   public Highcharts: typeof Highcharts = Highcharts;
   public chartOptions!: Highcharts.Options;
 
   ngOnInit(): void {
-    console.log('line data = ' + this.data.dataPoints);
+    console.log('line data = ' + this.data);
     this.chartOptions = {
       title:{text:this.chartTitle},
       series: [{
@@ -29,7 +29,4 @@ export class LineChartComponent implements OnInit {
     }
   }
   
-  ngOnChanges(changes: SimpleChanges) {
-    console.log(changes.chartTitle.currentValue);
-  }
 };

@@ -48,20 +48,13 @@ public static class MarsWeatherDeserialize {
     private static Pressure PressureTimeSeries(List<string> sol_keys, List<JSO> list_jso){
         Pressure result = new Pressure {};
 
-        foreach (JSO item in list_jso)
+        for (int i = 0; i < sol_keys.Count; i++)
         {
-            result.av.Add(item.pre.av);
-            result.ct.Add(item.pre.ct);
-            result.mn.Add(item.pre.mn);
-            result.mx.Add(item.pre.mx);           
+            result.pressure_timeseries_av.Add((Int32.Parse(sol_keys[i]),list_jso[i].pre.av));
+            result.pressure_timeseries_ct.Add((Int32.Parse(sol_keys[i]),list_jso[i].pre.ct));
+            result.pressure_timeseries_mn.Add((Int32.Parse(sol_keys[i]),list_jso[i].pre.mn));
+            result.pressure_timeseries_mx.Add((Int32.Parse(sol_keys[i]),list_jso[i].pre.mx));                           
         }
-
-        foreach (string item in sol_keys)
-        {
-            int tmp= Int32.Parse(item);
-            result.sol.Add(Int32.Parse(item));
-        }
-
 
         return result;
     }

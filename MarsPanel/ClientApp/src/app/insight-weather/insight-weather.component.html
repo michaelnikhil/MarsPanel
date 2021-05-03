@@ -1,6 +1,9 @@
 <p>insight-weather works!</p>
+<div class='card-header'>
+    {{pressure$ | async | json }}
+  </div>
 <app-line-chart 
-    [data]="pressureData"
+    [data]="pressure_timeseries_av"
     [chartTitle]="titlePressureChart"
 >
 

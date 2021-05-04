@@ -13,13 +13,13 @@ import { tap } from 'rxjs/operators';
 export class InsightWeatherComponent implements OnInit, OnDestroy {
   
   pageTitle = 'Weather on Mars (Insight probe)';
-  public pressure$: any;
+  public pressure$!: IPressure;
   errorMessage = '';
   // public pressureData: XYData = {
   //   dataPoints: [[5, 2], [6, 3], [8, 2]]
   //  };
   public titlePressureChart = 'Pressure chart';
-  pressure_timeseries_av! : XYData;
+  public pressure_timeseries_av$! : XYData;
   public tempPressure!: IPressure;
 
   _subscription!: Subscription;
@@ -31,8 +31,10 @@ export class InsightWeatherComponent implements OnInit, OnDestroy {
       {
         next: weather => {
           this.pressure$ = weather;
-          //this.pressure_timeseries_av = weather.pressure_timeseries_av;
-          console.log('subscrition val ' + JSON.stringify(this.pressure_timeseries_av));
+          this.pressure_timeseries_av$ = weather.pressure_timeseries_av;
+          this.pressure_timeseries_av$.dataPoints = weather.pressure_timeseries_av.dataPoints;
+
+          console.log('subscrition val ' + JSON.stringify(this.pressure$));
         },
         error: err => this.errorMessage = err
       }

@@ -13,8 +13,8 @@ export class InsightWeatherService {
 
   constructor(private http: HttpClient) { }
   
-  public get(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiBaseUrl).pipe(
+  public get(): Observable<IPressure> {
+    return this.http.get<IPressure>(this.apiBaseUrl).pipe(
       tap(out => console.log('Pressure = ' + JSON.stringify(out))),
       catchError(this.handleError)
     );

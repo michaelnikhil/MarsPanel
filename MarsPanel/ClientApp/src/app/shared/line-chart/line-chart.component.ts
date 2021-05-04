@@ -1,4 +1,4 @@
-import { XYData } from './../chart-widget.model';
+import { DataPoint, XYData } from './../chart-widget.model';
 import { Component, Input, OnInit, SimpleChanges, } from '@angular/core';
 import * as Highcharts from 'highcharts';
 
@@ -9,10 +9,9 @@ import * as Highcharts from 'highcharts';
 })
 
 export class LineChartComponent implements OnInit {
-  @Input() public data: XYData = {dataPoints : [[5, 2], [6, 3], [8, 2]]};
-  @Input()
-  public chartTitle!: string;
-  @Input()
+  @Input() public data: [number,number][] =  [[5, 2], [6, 3], [8, 2]];
+  @Input() public chartTitle!: string;
+  public data2: [number,number][] =  [[5, 2], [6, 3], [8, 2]];
   //public data!: XYData;
 
   public Highcharts: typeof Highcharts = Highcharts;
@@ -23,8 +22,9 @@ export class LineChartComponent implements OnInit {
     this.chartOptions = {
       title:{text:this.chartTitle},
       series: [{
-        data: this.data.dataPoints,
-        type: 'line'
+        name: 'average',
+        data: this.data,
+        type: 'scatter'
       }]
     }
   }

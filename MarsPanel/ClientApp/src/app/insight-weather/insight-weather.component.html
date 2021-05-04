@@ -2,6 +2,9 @@
 <div class='card-header'>
     {{pressure_timeseries_av$ | json }}
   </div>
+  <div class='card-header'>
+    {{pressure_timeseries_av$ | json }}
+  </div>
 <app-line-chart 
     [data]="pressure_timeseries_av$"
     [chartTitle]="titlePressureChart"

@@ -20,7 +20,7 @@ export interface SeriesData {
 }
 
 export interface DataPoint {
-    data: number;
+    x: number;
     y: number;
 }
 

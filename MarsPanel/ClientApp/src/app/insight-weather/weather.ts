@@ -1,8 +1,9 @@
+import { DataPoint } from './../shared/chart-widget.model';
 import { XYData } from "../shared/chart-widget.model";
 
 export interface IPressure {
-    pressure_timeseries_av : XYData,
-    pressure_timeseries_ct : XYData,
-    pressure_timeseries_mn : XYData,       
-    pressure_timeseries_mx : XYData,
+    pressure_timeseries_av : [number,number][],
+    pressure_timeseries_ct : [number,number][],
+    pressure_timeseries_mn : [number,number][],       
+    pressure_timeseries_mx : [number,number][],
  }

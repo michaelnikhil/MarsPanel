@@ -7,8 +7,8 @@ namespace MarsPanel.Services
 {
     public class DataService : IDataService
     {
-        private readonly IRestClient _restClient;
-        public DataService(IRestClient restClient)
+        private readonly RestClient _restClient;
+        public DataService(RestClient restClient)
         {
             _restClient = restClient;
         }
@@ -17,7 +17,7 @@ namespace MarsPanel.Services
         {
             string result = string.Empty ;
 
-            RestRequest restRequest = new RestRequest(endpoint.baseEndPoint, DataFormat.Json);
+            RestRequest restRequest = new RestRequest(endpoint.baseEndPoint);
             if (endpoint.parameters != null){
                 foreach (var item in endpoint.parameters)
                 {

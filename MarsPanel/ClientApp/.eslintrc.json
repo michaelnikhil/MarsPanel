@@ -13,6 +13,7 @@
           "tsconfig.json",
           "e2e/tsconfig.json"
         ],
+        "tsconfigRootDir": "MarsPanel/ClientApp",
         "createDefaultProgram": true
       },
       "extends": [
@@ -23,7 +24,6 @@
         "@angular-eslint/component-selector": [
           "error",
           {
-            "prefix": "app",
             "style": "kebab-case",
             "type": "element"
           }
@@ -31,7 +31,6 @@
         "@angular-eslint/directive-selector": [
           "error",
           {
-            "prefix": "app",
             "style": "camelCase",
             "type": "attribute"
           }
@@ -45,7 +44,7 @@
       "extends": [
         "plugin:@angular-eslint/template/recommended"
       ],
-      "rules": {}
+      "rules": {  }
     }
   ]
 }

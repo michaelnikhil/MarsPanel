@@ -1,21 +1,5 @@
-<div class="card">
-  <div class="card-header text-center">
-    {{pageTitle}}  {{ apod.date | date}}
-  </div>
-  <div class="card-body">
-    <div class="container-fluid">
-      <div class="text-center">
-        <div *ngIf="apod.media_type=='image'">
-          <img [src]="apod.url" 
-              class="img-responsive center-block"
-              style="max-height:500px;padding-bottom:50px" />
-        </div>
-
-
-      </div>
-      <p class="card-text">{{apod.explanation}}</p>
-
-    </div>
-  </div>
-</div>
+<apod-detail
+(pageTitle)="pageTitle"
+(apod) = "apod">
+</apod-detail>
 <app-date-picker>test</app-date-picker>

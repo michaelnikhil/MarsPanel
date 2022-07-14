@@ -12,6 +12,7 @@ import { AngularMaterialModule } from './shared/angular-material.module';
 import { InsightWeatherComponent } from './insight-weather/insight-weather.component';
 import { LineChartComponent } from './shared/line-chart/line-chart.component';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { ApodDetailComponent } from './apod/apod-detail/apod-detail.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HighchartsChartModule } from 'highcharts-angular';
     ApodComponent,
     DatePickerComponent,
     InsightWeatherComponent,
-    LineChartComponent
+    LineChartComponent,
+    ApodDetailComponent
   ],
   imports: [
     BrowserModule,

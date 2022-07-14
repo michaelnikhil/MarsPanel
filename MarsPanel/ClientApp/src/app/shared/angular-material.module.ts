@@ -22,4 +22,5 @@ const materialModules = [
   ],
 })
 
-export class AngularMaterialModule { }
+// eslint-disable-next-line no-trailing-spaces
+export class AngularMaterialModule { } 

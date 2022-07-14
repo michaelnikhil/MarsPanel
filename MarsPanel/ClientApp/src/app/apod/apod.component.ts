@@ -2,7 +2,6 @@ import { ApodService } from './apod.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IApod } from './apod';
-
 @Component({
   selector: 'app-apod',
   templateUrl: './apod.component.html',
@@ -13,24 +12,31 @@ export class ApodComponent implements OnInit, OnDestroy {
   pageTitle = 'Picture of the Day';
   apod!: IApod;
 
-  private _subscription: Subscription = new Subscription;
-  errorMessage = '';
+  private _apodDefault: Subscription = new Subscription();
+  private _apodByDate: Subscription = new Subscription();
+
+  errorMessage = 'Boom !!';
 
   constructor(private apodService: ApodService) { }
 
   ngOnInit(): void {
-    this._subscription = this.apodService.get().subscribe(
+    this._apodDefault = this.apodService.getToday().subscribe(
       {
         next: Apod => this.apod = Apod,
         error: error => this.errorMessage = error
       }
     );
-    console.log('apod component on init');
-
   }
 
-   ngOnDestroy(): void {
-     this._subscription.unsubscribe();
-   }
+  onDateChange(date: string): void {
+    this._apodByDate = this.apodService.getByDate(date).subscribe({
+      next: Apod => this.apod = Apod,
+      error: error => this.errorMessage = error
+    });
+  }
 
+  ngOnDestroy(): void {
+    this._apodDefault.unsubscribe();
+    this._apodByDate.unsubscribe();
+  }
 }

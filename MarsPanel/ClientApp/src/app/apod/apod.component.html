@@ -1,5 +1,6 @@
-<apod-detail
-(pageTitle)="pageTitle"
-(apod) = "apod">
-</apod-detail>
-<app-date-picker>test</app-date-picker>
+ <apod-detail
+  [pageTitle]="pageTitle"
+  [apod] = "apod">
+</apod-detail> 
+<date-picker 
+(selectedDate)="onDateChange($event)"></date-picker>

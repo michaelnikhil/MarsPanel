@@ -1,4 +1,5 @@
 ﻿using MarsPanel.Api;
+using MarsPanel.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using RestSharp;
@@ -20,6 +21,7 @@ namespace MarsPanel
                 builder.Configuration.GetValue<string>("ApiKey")));
 
             builder.Services.AddOptions().Configure<EndpointsSettings>(builder.Configuration.GetSection("endpoints"));
+            builder.Services.AddOptions().Configure<ApodSettings>(builder.Configuration.GetSection("endpoints"));
             builder.Services.AddTransient<IDataService, DataService>();
             builder.Services.AddControllers().AddNewtonsoftJson();
 

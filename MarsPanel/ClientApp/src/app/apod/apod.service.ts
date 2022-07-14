@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -12,9 +11,17 @@ export class ApodService {
 
   constructor(private http: HttpClient) { }
 
-  public get(): Observable<IApod> {
-    return this.http.get<IApod>(this.apiBaseUrl).pipe(
-      tap(out => console.log('Apod = ' + JSON.stringify(out))),
+  public getToday(): Observable<IApod> {
+    return this.http.get<IApod>(this.apiBaseUrl + '/today').pipe(
+      tap(out => console.log('Apod today ' + JSON.stringify(out) )),
+      catchError(this.handleError)
+    );
+  }
+
+  public getByDate(date: string): Observable<IApod> {
+    console.log('get by date');
+    return this.http.get<IApod>(`${this.apiBaseUrl}/date/${date}`).pipe(
+      tap(out => console.log('Apod by date  ' + JSON.stringify(out))),
       catchError(this.handleError)
     );
   }

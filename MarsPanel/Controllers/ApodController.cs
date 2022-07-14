@@ -19,10 +19,17 @@ namespace MarsPanel.Controllers
             _endpointsSettings = endpointsSettings.Value;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Index()
+        [HttpGet("today")]
+        public async Task<IActionResult> Get()
         {
-            string result = await _dataService.GetObject(_endpointsSettings.Apod);
+            string result = await _dataService.GetApod();
+            Apod apod = ApodDeserialize.Process(result);
+            return Ok(apod);
+        }
+        [HttpGet("date/{date}")]
+        public async Task<IActionResult> Get(string date)
+        {
+            string result = await _dataService.GetApod(date);
             Apod apod = ApodDeserialize.Process(result);
             return Ok(apod);
         }

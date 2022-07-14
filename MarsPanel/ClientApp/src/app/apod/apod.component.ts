@@ -12,8 +12,8 @@ export class ApodComponent implements OnInit, OnDestroy {
   pageTitle = 'Picture of the Day';
   apod!: IApod;
 
-  private _apodDefault: Subscription = new Subscription;
-  private _apodByDate: Subscription = new Subscription;
+  private _apodDefault: Subscription = new Subscription();
+  private _apodByDate: Subscription = new Subscription();
 
   errorMessage = 'Boom !!';
 
@@ -29,7 +29,6 @@ export class ApodComponent implements OnInit, OnDestroy {
   }
 
   onDateChange(date: string): void {
-    console.log('change date ' + date);
     this._apodByDate = this.apodService.getByDate(date).subscribe({
       next: Apod => this.apod = Apod,
       error: error => this.errorMessage = error

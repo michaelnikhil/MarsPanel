@@ -10,8 +10,7 @@
       ],
       "parserOptions": {
         "project": [
-          "tsconfig.json",
-          "e2e/tsconfig.json"
+          "**/tsconfig.json"
         ],
         "tsconfigRootDir": "MarsPanel/ClientApp",
         "createDefaultProgram": true
@@ -34,17 +33,7 @@
             "style": "camelCase",
             "type": "attribute"
           }
-        ]
-      }
-    },
-    {
-      "files": [
-        "*.html"
-      ],
-      "extends": [
-        "plugin:@angular-eslint/template/recommended"
-      ],
-      "rules": { 
+        ],
         "@typescript-eslint/no-unused-vars": ["error", { "args": "none", "varsIgnorePattern": "[_]" }],
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-var-requires": "off",
@@ -191,6 +180,17 @@
         "wrap-regex": "error",
         "yield-star-spacing": "error",
         "yoda": "error"
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
+      "rules": { 
+
        }
     }
   ]

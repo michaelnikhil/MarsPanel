@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { IApod } from './apod';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -12,16 +13,15 @@ export class ApodService {
   constructor(private http: HttpClient) { }
 
   public getToday(): Observable<IApod> {
-    return this.http.get<IApod>(this.apiBaseUrl + '/today').pipe(
-      tap(out => console.log('Apod today ' + JSON.stringify(out) )),
+    return this.http.get<IApod>(`${this.apiBaseUrl}/today`).pipe(
+      tap(out => console.log(`Apod today ${JSON.stringify(out)}`)),
       catchError(this.handleError)
     );
   }
 
   public getByDate(date: string): Observable<IApod> {
-    console.log('get by date');
     return this.http.get<IApod>(`${this.apiBaseUrl}/date/${date}`).pipe(
-      tap(out => console.log('Apod by date  ' + JSON.stringify(out))),
+      tap(out => console.log(`Apod by date  ${JSON.stringify(out)}`)),
       catchError(this.handleError)
     );
   }

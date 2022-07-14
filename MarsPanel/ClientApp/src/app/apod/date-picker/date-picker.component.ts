@@ -11,8 +11,8 @@ export class DatePickerComponent   {
   format = 'DD  HH:mm:ss';
 
   onDateSelected(event: MatDatepickerInputEvent<Date>) {
-    if (event.value){
-      let dateConvert = moment(new Date(event.value.toString())).format("YYYY-MM-DD");
+    if (event.value) {
+      const dateConvert = moment(new Date(event.value.toString())).format('YYYY-MM-DD');
       this.selectedDate.emit(dateConvert);
     }
   }

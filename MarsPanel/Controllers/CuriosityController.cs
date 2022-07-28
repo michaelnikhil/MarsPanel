@@ -1,16 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
-using MarsPanel.NasaOpenApi;
+using MarsPanel.MarsNasa;
 
 namespace MarsPanel.Controllers
 {
-    [Route("api/[controller]", Name = "MarsWeather")]
-    public class MarsWeatherController : Controller
+    [Route("api/[controller]", Name = "Curiosity")]
+    public class CuriosityController : Controller
     {
-        private readonly INasaOpenApiClient _nasaOpenApiClient;
+        private readonly IMarsNasaClient _marsNasaClient;
 
-        public MarsWeatherController(INasaOpenApiClient nasaOpenApiClient)
+        public CuriosityController(IMarsNasaClient marsNasaClient)
         {
-            _nasaOpenApiClient = nasaOpenApiClient;
+            _marsNasaClient = marsNasaClient;
         }
 
         //[HttpGet]

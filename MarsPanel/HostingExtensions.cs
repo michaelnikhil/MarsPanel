@@ -1,14 +1,10 @@
-﻿using MarsPanel.Api;
-using MarsPanel.Models;
+﻿using MarsPanel.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using RestSharp;
-using Microsoft.Extensions.Configuration;
-using System;
 using MarsPanel.Configuration;
-using MarsPanel.Services;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using MarsPanel.NasaOpenApi;
 
 namespace MarsPanel
 {
@@ -16,13 +12,10 @@ namespace MarsPanel
     {
         public static WebApplicationBuilder ConfigureServices(this WebApplicationBuilder builder)
         {
-            builder.Services.AddSingleton<RestClient, HttpClient>(context =>
-                new HttpClient(new Uri(builder.Configuration.GetValue<string>("rootUrl")),
-                builder.Configuration.GetValue<string>("ApiKey")));
+            builder.Services.Configure<ApodSettings>(builder.Configuration.GetSection("NasaApiEndpoints"));
+            builder.Services.Configure<EndpointsSettings>(builder.Configuration.GetSection("NasaApiEndpoints"));
+            builder.Services.AddNasaOpenApi(builder.Configuration);
 
-            builder.Services.AddOptions().Configure<EndpointsSettings>(builder.Configuration.GetSection("endpoints"));
-            builder.Services.AddOptions().Configure<ApodSettings>(builder.Configuration.GetSection("endpoints"));
-            builder.Services.AddTransient<IDataService, DataService>();
             builder.Services.AddControllers().AddNewtonsoftJson();
 
             builder.Services.AddSpaStaticFiles(configuration =>

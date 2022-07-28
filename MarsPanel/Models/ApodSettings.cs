@@ -2,6 +2,7 @@ namespace MarsPanel.Models
 {
     public class ApodSettings
     {
+        public string ApiKey { get; set; }
         public ApodDefinition Apod { get; set; }
 
         public class ApodDefinition

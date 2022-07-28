@@ -1,9 +1,4 @@
-
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-using MarsPanel.Configuration;
-using Microsoft.Extensions.Options;
-using MarsPanel.DataTransferObjects;
 using MarsPanel.MarsNasa;
 
 namespace MarsPanel.Controllers

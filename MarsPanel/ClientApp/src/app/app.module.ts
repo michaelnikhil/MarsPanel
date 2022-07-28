@@ -13,6 +13,7 @@ import { InsightWeatherComponent } from './insight-weather/insight-weather.compo
 import { LineChartComponent } from './shared/line-chart/line-chart.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { ApodDetailComponent } from './apod/apod-detail/apod-detail.component';
+import { CuriosityComponent } from './curiosity/curiosity.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ApodDetailComponent } from './apod/apod-detail/apod-detail.component';
     DatePickerComponent,
     InsightWeatherComponent,
     LineChartComponent,
-    ApodDetailComponent
+    ApodDetailComponent,
+    CuriosityComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +34,7 @@ import { ApodDetailComponent } from './apod/apod-detail/apod-detail.component';
       { path: 'home', component: HomeComponent },
       { path: 'apod', component: ApodComponent },
       { path: 'insight-weather', component: InsightWeatherComponent },
+      { path: 'curiosity', component: CuriosityComponent },
     ]),
     BrowserAnimationsModule,
     AngularMaterialModule,

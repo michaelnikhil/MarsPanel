@@ -5,6 +5,6 @@ namespace MarsPanel.MarsNasa
 {
     public interface IMarsNasaClient
     {
-        Task<string> GetObject(Endpoint endpoint);
+        Task<string> GetObject();
     }
 }

@@ -1,10 +1,11 @@
-﻿using MarsPanel.Models;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using MarsPanel.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using MarsPanel.NasaOpenApi;
+using MarsPanel.MarsNasa;
+using MarsPanel.NasaOpenApi.Models;
 
 namespace MarsPanel
 {
@@ -13,11 +14,11 @@ namespace MarsPanel
         public static WebApplicationBuilder ConfigureServices(this WebApplicationBuilder builder)
         {
             builder.Services.Configure<ApodSettings>(builder.Configuration.GetSection("NasaApiEndpoints"));
-            builder.Services.Configure<EndpointsSettings>(builder.Configuration.GetSection("NasaApiEndpoints"));
+            builder.Services.Configure<OpenApiEndpointSettings>(builder.Configuration.GetSection("NasaApiEndpoints"));
+            builder.Services.Configure<GenericEndpointSettings>(builder.Configuration.GetSection("Curiosity"));
             builder.Services.AddNasaOpenApi(builder.Configuration);
-
+            builder.Services.AddMarsNasaApi(builder.Configuration);
             builder.Services.AddControllers().AddNewtonsoftJson();
-
             builder.Services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";

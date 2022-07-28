@@ -1,15 +1,15 @@
 using Newtonsoft.Json;
-using MarsPanel.Models;
+using MarsPanel.NasaOpenApi.Models;
+
 public static class ApodDeserialize {
 
-    public static Apod Process(string json){
-        Apod result = new Apod { };
+    public static ApodResponse Process(string json){
+        ApodResponse result = new ApodResponse { };
 
         if (!string.IsNullOrEmpty(json))
         {
-            result = JsonConvert.DeserializeObject<Apod>(json);
+            result = JsonConvert.DeserializeObject<ApodResponse>(json);
         }
-
         return result;
     }
 

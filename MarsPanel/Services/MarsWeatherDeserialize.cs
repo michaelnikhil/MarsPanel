@@ -2,8 +2,9 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using MarsPanel.DataTransferObjects;
-using MarsPanel.Models;
 using System;
+using MarsPanel.NasaOpenApi.Models;
+
 public static class MarsWeatherDeserialize {
 
     public static Pressure Process(string json){

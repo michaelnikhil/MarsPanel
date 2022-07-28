@@ -1,4 +1,4 @@
-namespace MarsPanel.Models
+namespace MarsPanel.MarsNasa.Models
 {
     public class CuriosityResponse
     {

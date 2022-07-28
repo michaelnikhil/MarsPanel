@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using MarsPanel.MarsNasa;
+using System.Threading.Tasks;
+using MarsPanel.Services;
+using MarsPanel.MarsNasa.Models;
 
 namespace MarsPanel.Controllers
 {
@@ -13,12 +16,12 @@ namespace MarsPanel.Controllers
             _marsNasaClient = marsNasaClient;
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> Index()
-        //{
-        //    string result = await _dataService.GetObject(_endpointsSettings.Insight);
-        //    Pressure pressure_dataset = MarsWeatherDeserialize.Process(result);
-        //    return Ok(pressure_dataset);
-        //}
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            string result = await _marsNasaClient.GetObject();
+            CuriosityResponse curiosity = CuriosityDeserialize.Process(result);
+            return Ok(curiosity);
+        }
     }
 }

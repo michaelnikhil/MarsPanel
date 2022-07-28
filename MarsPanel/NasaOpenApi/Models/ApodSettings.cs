@@ -1,4 +1,4 @@
-namespace MarsPanel.Models
+namespace MarsPanel.NasaOpenApi.Models
 {
     public class ApodSettings
     {
@@ -8,12 +8,12 @@ namespace MarsPanel.Models
         public class ApodDefinition
         {
             public string BaseEndPoint { get; set; }
-            public ParameterDefinition Parameters {get; set;}
+            public ParameterDefinition Parameters { get; set; }
 
-            public class ParameterDefinition 
+            public class ParameterDefinition
             {
                 public string Date { get; set; }
-                
+
             }
         }
     }

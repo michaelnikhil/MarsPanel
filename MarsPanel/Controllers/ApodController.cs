@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using MarsPanel.Models;
 using MarsPanel.NasaOpenApi;
+using MarsPanel.NasaOpenApi.Models;
 
 namespace MarsPanel.Controllers
 {
@@ -19,14 +19,14 @@ namespace MarsPanel.Controllers
         public async Task<IActionResult> Get()
         {
             string result = await _nasaOpenApiClient.GetApod();
-            Apod apod = ApodDeserialize.Process(result);
+            ApodResponse apod = ApodDeserialize.Process(result);
             return Ok(apod);
         }
         [HttpGet("date/{date}")]
         public async Task<IActionResult> Get(string date)
         {
             string result = await _nasaOpenApiClient.GetApod(date);
-            Apod apod = ApodDeserialize.Process(result);
+            ApodResponse apod = ApodDeserialize.Process(result);
             return Ok(apod);
         }
     }

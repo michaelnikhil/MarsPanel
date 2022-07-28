@@ -1,5 +1,5 @@
 ﻿using MarsPanel.Configuration;
-using MarsPanel.Models;
+using MarsPanel.NasaOpenApi.Models;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Options;
 using System;

@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 
-namespace MarsPanel.Models{
-    public class JSO {
+namespace MarsPanel.NasaOpenApi.Models
+{
+    public class JSO
+    {
         public DateTime First_UTC;
         public DateTime Last_UTC;
         public int Month_ordinal;

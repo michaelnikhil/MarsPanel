@@ -1,19 +1,29 @@
 ﻿using MarsPanel.MarsNasa.Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MarsPanel.Services
 {
     public class CuriosityDeserialize
     {
-        public static CuriosityResponse Process(string json)
+        public static Dictionary<string, List<string>> Process(string json)
         {
-            CuriosityResponse result = new CuriosityResponse { };
+            CuriosityResponse response = new CuriosityResponse { };
 
             if (!string.IsNullOrEmpty(json))
             {
-                result = JsonConvert.DeserializeObject<CuriosityResponse>(json);
+                response = JsonConvert.DeserializeObject<CuriosityResponse>(json);
             }
-            return result;
+
+            Dictionary<string, List<string>> table = new Dictionary<string, List<string>> { };
+
+            table.Add("sol", response.Soles.Select(c => c.sol).ToList());
+            table.Add("min_temp", response.Soles.Select(c => c.min_temp).ToList());
+            table.Add("max_temp", response.Soles.Select(c => c.max_temp).ToList());
+
+            return table;
         }
     }
 }

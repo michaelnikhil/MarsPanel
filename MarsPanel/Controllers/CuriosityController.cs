@@ -3,6 +3,7 @@ using MarsPanel.MarsNasa;
 using System.Threading.Tasks;
 using MarsPanel.Services;
 using MarsPanel.MarsNasa.Models;
+using System.Collections.Generic;
 
 namespace MarsPanel.Controllers
 {
@@ -20,7 +21,7 @@ namespace MarsPanel.Controllers
         public async Task<IActionResult> Index()
         {
             string result = await _marsNasaClient.GetObject();
-            CuriosityResponse curiosity = CuriosityDeserialize.Process(result);
+            Dictionary<string, List<string>> curiosity = CuriosityDeserialize.Process(result);
             return Ok(curiosity);
         }
     }

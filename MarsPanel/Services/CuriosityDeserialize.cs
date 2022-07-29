@@ -16,9 +16,10 @@ namespace MarsPanel.Services
             if (!string.IsNullOrEmpty(json))
             {
                 response = JsonConvert.DeserializeObject<CuriosityResponse>(json);
-                table.Add("sol", response.Soles.Select(c => c.sol).ToList());
-                table.Add("min_temp", response.Soles.Select(c => c.min_temp).ToList());
-                table.Add("max_temp", response.Soles.Select(c => c.max_temp).ToList());
+                table.Add("sol", response.Soles.Select(c => c.sol).Take(10).ToList());
+                table.Add("min_temp", response.Soles.Select(c => c.min_temp).Take(10).ToList());
+                table.Add("max_temp", response.Soles.Select(c => c.max_temp).Take(10).ToList());
+
             }
             return table;
         }

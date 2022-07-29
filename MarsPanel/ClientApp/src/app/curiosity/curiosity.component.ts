@@ -1,4 +1,7 @@
+/* eslint-disable no-console */
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { DataService } from '../shared/dataservice';
 
 @Component({
   selector: 'curiosity',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CuriosityComponent implements OnInit {
 
-  constructor() { }
+  _subscription!: Subscription;
+  constructor(private dataservice : DataService) { }
 
   ngOnInit(): void {
+    this._subscription = this.dataservice.getCuriosity().subscribe(
+      {
+        next: data => {
+          console.log(`subscrition val ${JSON.stringify(data)}`);
+        }
+      }
+    );
   }
-
 }

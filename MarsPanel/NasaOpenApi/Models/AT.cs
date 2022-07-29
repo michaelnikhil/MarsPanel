@@ -1,6 +1,7 @@
-
-namespace MarsPanel.Models{
-    public class AT {
+namespace MarsPanel.NasaOpenApi.Models
+{
+    public class AT
+    {
         public double av;
         public double ct;
         public double mn;

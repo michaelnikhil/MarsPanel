@@ -1,7 +1,9 @@
 using System;
 
-namespace MarsPanel.Models{
-    public class Apod {
+namespace MarsPanel.NasaOpenApi.Models
+{
+    public class ApodResponse
+    {
         public DateTime date;
         public string explanation;
         public string media_type;

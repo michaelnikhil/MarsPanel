@@ -1,6 +1,21 @@
- <apod-detail
-  [pageTitle]="pageTitle"
-  [apod] = "apod">
-</apod-detail> 
-<date-picker 
-(selectedDate)="onDateChange($event)"></date-picker>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-3">
+      <h4>Date</h4>
+      <div class="margin-top-25">
+      <date-picker 
+      (selectedDate)="onDateChange($event)">
+      </date-picker>
+      </div>
+    </div>
+
+      <div class="col-sm-9">
+          <apod-detail
+          [pageTitle]="pageTitle"
+          [apod] = "apod">
+        </apod-detail> 
+      </div>
+  </div>
+</div>
+

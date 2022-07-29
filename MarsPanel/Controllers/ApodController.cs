@@ -1,36 +1,32 @@
-﻿using MarsPanel.Services;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using MarsPanel.Models;
-using MarsPanel.Configuration;
-using Microsoft.Extensions.Options;
+using MarsPanel.NasaOpenApi;
+using MarsPanel.NasaOpenApi.Models;
 
 namespace MarsPanel.Controllers
 {
     [Route("api/[controller]", Name = "Apod")]
     public class ApodController : Controller
     {
-        private readonly IDataService _dataService;
-        private readonly EndpointsSettings _endpointsSettings;
+        private readonly INasaOpenApiClient _nasaOpenApiClient;
 
-        public ApodController(IDataService dataService, IOptions<EndpointsSettings> endpointsSettings)
+        public ApodController(INasaOpenApiClient nasaOpenApiClient)
         {
-            _dataService = dataService;
-            _endpointsSettings = endpointsSettings.Value;
+            _nasaOpenApiClient = nasaOpenApiClient;
         }
 
         [HttpGet("today")]
         public async Task<IActionResult> Get()
         {
-            string result = await _dataService.GetApod();
-            Apod apod = ApodDeserialize.Process(result);
+            string result = await _nasaOpenApiClient.GetApod();
+            ApodResponse apod = ApodDeserialize.Process(result);
             return Ok(apod);
         }
         [HttpGet("date/{date}")]
         public async Task<IActionResult> Get(string date)
         {
-            string result = await _dataService.GetApod(date);
-            Apod apod = ApodDeserialize.Process(result);
+            string result = await _nasaOpenApiClient.GetApod(date);
+            ApodResponse apod = ApodDeserialize.Process(result);
             return Ok(apod);
         }
     }

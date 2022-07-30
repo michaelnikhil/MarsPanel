@@ -9,7 +9,6 @@ import { ApodComponent } from './apod/apod.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePickerComponent } from './apod/date-picker/date-picker.component';
 import { AngularMaterialModule } from './shared/angular-material.module';
-import { InsightWeatherComponent } from './insight-weather/insight-weather.component';
 import { LineChartComponent } from './shared/line-chart/line-chart.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { ApodDetailComponent } from './apod/apod-detail/apod-detail.component';
@@ -20,7 +19,6 @@ import { ApodDetailComponent } from './apod/apod-detail/apod-detail.component';
     HomeComponent,
     ApodComponent,
     DatePickerComponent,
-    InsightWeatherComponent,
     LineChartComponent,
     ApodDetailComponent
   ],
@@ -31,7 +29,6 @@ import { ApodDetailComponent } from './apod/apod-detail/apod-detail.component';
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: 'apod', component: ApodComponent },
-      { path: 'insight-weather', component: InsightWeatherComponent },
     ]),
     BrowserAnimationsModule,
     AngularMaterialModule,

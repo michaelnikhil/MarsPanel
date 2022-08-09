@@ -14,6 +14,7 @@ import { LineChartComponent } from './shared/line-chart/line-chart.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { ApodDetailComponent } from './apod/apod-detail/apod-detail.component';
 import { ApikeyComponent } from './apikey/apikey.component';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ApikeyComponent } from './apikey/apikey.component';
     FormsModule,
     ReactiveFormsModule,
     HighchartsChartModule,
+    EffectsModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -34,7 +34,13 @@
             "type": "attribute"
           }
         ],
-        "@typescript-eslint/no-unused-vars": ["error", { "args": "none", "varsIgnorePattern": "[_]" }],
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          {
+            "args": "none",
+            "varsIgnorePattern": "[_]"
+          }
+        ],
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-var-requires": "off",
         "@typescript-eslint/explicit-module-boundary-types": "off",
@@ -70,7 +76,13 @@
         "lines-around-comment": "error",
         "max-classes-per-file": "error",
         "max-depth": "error",
-        "max-len": ["warn", { "code": 120, "ignorePattern": "^import" }],
+        "max-len": [
+          "warn",
+          {
+            "code": 120,
+            "ignorePattern": "^import"
+          }
+        ],
         "max-lines": "error",
         "max-nested-callbacks": "error",
         "max-statements": "off",
@@ -155,7 +167,10 @@
         "prefer-rest-params": "error",
         "prefer-template": "error",
         "prefer-spread": "off",
-        "quotes": ["error", "single"],
+        "quotes": [
+          "error",
+          "single"
+        ],
         "radix": "error",
         "require-atomic-updates": "error",
         "require-await": "error",
@@ -189,9 +204,15 @@
       "extends": [
         "plugin:@angular-eslint/template/recommended"
       ],
-      "rules": { 
-
-       }
+      "rules": {}
+    },
+    {
+      "files": [
+        "*.ts"
+      ],
+      "extends": [
+        "plugin:@ngrx/recommended"
+      ]
     }
   ]
 }

@@ -15,6 +15,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { ApodDetailComponent } from './apod/apod-detail/apod-detail.component';
 import { ApikeyComponent } from './apikey/apikey.component';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { EffectsModule } from '@ngrx/effects';
     ReactiveFormsModule,
     HighchartsChartModule,
     EffectsModule.forRoot([]),
+    StoreModule.forRoot({}, {}),
   ],
   providers: [],
   bootstrap: [AppComponent]

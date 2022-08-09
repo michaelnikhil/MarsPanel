@@ -1,0 +1,26 @@
+<div class="usa-grid">
+  <h2>Enter Api Key</h2>
+</div>
+
+<div class="container-fluid">
+
+  <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <div class="mb-3 row">
+        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+
+      <div class="mb-3 row">
+        <div>
+          <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <div>
+          <a href="https://api.nasa.gov/#signUp" target="_blank"> Request password </a>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

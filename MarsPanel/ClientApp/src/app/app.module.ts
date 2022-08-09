@@ -9,9 +9,11 @@ import { ApodComponent } from './apod/apod.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePickerComponent } from './apod/date-picker/date-picker.component';
 import { AngularMaterialModule } from './shared/angular-material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LineChartComponent } from './shared/line-chart/line-chart.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { ApodDetailComponent } from './apod/apod-detail/apod-detail.component';
+import { ApikeyComponent } from './apikey/apikey.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { ApodDetailComponent } from './apod/apod-detail/apod-detail.component';
     ApodComponent,
     DatePickerComponent,
     LineChartComponent,
-    ApodDetailComponent
+    ApodDetailComponent,
+    ApikeyComponent
   ],
   imports: [
     BrowserModule,
@@ -29,9 +32,12 @@ import { ApodDetailComponent } from './apod/apod-detail/apod-detail.component';
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: 'apod', component: ApodComponent },
+      { path: 'apikey', component: ApikeyComponent },
     ]),
     BrowserAnimationsModule,
     AngularMaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     HighchartsChartModule,
   ],
   providers: [],

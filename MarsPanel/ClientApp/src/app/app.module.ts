@@ -16,6 +16,9 @@ import { ApodDetailComponent } from './apod/apod-detail/apod-detail.component';
 import { ApikeyComponent } from './apikey/apikey.component';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './store/state';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,8 @@ import { StoreModule } from '@ngrx/store';
     HighchartsChartModule,
     EffectsModule.forRoot([]),
     StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(reducers, { metaReducers }),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [],
   bootstrap: [AppComponent]

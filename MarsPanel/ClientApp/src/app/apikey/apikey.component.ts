@@ -12,9 +12,9 @@ import * as fromActions from '../store/actions';
 export class ApikeyComponent {
 
   key!: Observable<string>;
-  
+
   constructor(
-    private formBuilder: FormBuilder,private store: Store<AppState>
+    private formBuilder: FormBuilder, private store: Store<AppState>
   ) {
     store.select(state => state.apikeyValue).subscribe(res => {
       this.key = res;
@@ -23,7 +23,7 @@ export class ApikeyComponent {
 
   checkoutForm = this.formBuilder.nonNullable.group({
     apikey: ['']
-});  
+});
 
   onSubmit(): void {
       var tt = this.checkoutForm.controls['apikey'].value;

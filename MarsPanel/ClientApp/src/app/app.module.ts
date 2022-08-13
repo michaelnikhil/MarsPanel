@@ -44,7 +44,7 @@ import { apiKeyReducer } from './store/reducer';
     ReactiveFormsModule,
     HighchartsChartModule,
     EffectsModule.forRoot([]),
-    StoreModule.forRoot({mystate:apiKeyReducer}),
+    StoreModule.forRoot({mystate: apiKeyReducer}),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [],

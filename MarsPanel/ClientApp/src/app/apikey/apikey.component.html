@@ -7,7 +7,7 @@
   <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <div class="mb-3 row">
-        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <input type="text" class="form-control" formControlName="apikey" placeholder="apikey">
       </div>
 
       <div class="mb-3 row">

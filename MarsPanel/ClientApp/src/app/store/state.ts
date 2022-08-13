@@ -8,17 +8,15 @@ import {
 import { environment } from '../../environments/environment';
 
 
-export interface State {
-  apikeyValue : string
+export interface AppState {
+  apikeyValue : any
 }
 
-export const initialState: State = {
-  apikeyValue : "d79krUoEVNJQMnT5AWeZ9keAJzJPxmNVBu4jf9oH"
-};
-
-// export const reducers: ActionReducerMap<State> = {
-
+// export const initialState: AppState = {
+//   apikeyValue : "d79krUoEVNJQMnT5AWeZ9keAJzJPxmNVBu4jf9oH"
 // };
 
+// export const reducers: ActionReducerMap<AppState> = {};
 
-// export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
+
+//  export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];

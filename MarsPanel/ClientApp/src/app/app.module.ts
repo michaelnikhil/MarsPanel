@@ -16,9 +16,9 @@ import { ApodDetailComponent } from './apod/apod-detail/apod-detail.component';
 import { ApikeyComponent } from './apikey/apikey.component';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './store/state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { apiKeyReducer } from './store/reducer';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,6 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     HttpClientModule,
     RouterModule.forRoot([
-      { path: 'home', component: HomeComponent },
       { path: 'apod', component: ApodComponent },
       { path: 'apikey', component: ApikeyComponent },
     ]),
@@ -45,8 +44,7 @@ import { environment } from '../environments/environment';
     ReactiveFormsModule,
     HighchartsChartModule,
     EffectsModule.forRoot([]),
-    StoreModule.forRoot({}, {}),
-    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forRoot({mystate:apiKeyReducer}),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [],

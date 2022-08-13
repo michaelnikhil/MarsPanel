@@ -1,15 +1,16 @@
 import { createAction, props } from '@ngrx/store';
 
-export const loadApiKey = createAction(
-  '[ApiKey] Load Users'
+export const updateApiKey = createAction(
+  '[ApiKey] Update Api Key',
+  props<{ key: string }>()
 );
 
-export const loadApiKeySuccess = createAction(
-  '[ApiKey] Load Users Success',
+export const updateApiKeySuccess = createAction(
+  '[ApiKey] Update Api Key Success',
   props<{ data: any }>()
 );
 
-export const loadApiKeyFailure = createAction(
-  '[ApiKey] Load Users Failure',
+export const updateApiKeyFailure = createAction(
+  '[ApiKey] Update Api Key Failure',
   props<{ error: any }>()
 );

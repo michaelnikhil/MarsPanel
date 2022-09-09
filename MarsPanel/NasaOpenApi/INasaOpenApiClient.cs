@@ -7,6 +7,6 @@ namespace MarsPanel.NasaOpenApi
     {
         Task<string> GetObject(OpenApiEndpoint endpoint);
         Task<string> GetApod(string date);
-        Task<string> GetApod();
+        Task<string> GetApod(string apikey);
     }
 }

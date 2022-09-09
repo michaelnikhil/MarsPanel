@@ -4,16 +4,23 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import { AppState } from '../store/state';
 @Injectable({
   providedIn: 'root'
 })
 export class ApodService {
   private readonly apiBaseUrl: string = '/api/apod';
+  key!: Observable<string>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private store: Store<AppState>) { 
+    store.select(state => state.apikeyValue).subscribe(res => {
+      this.key = res;
+    });
+  }
 
   public getToday(): Observable<IApod> {
-    return this.http.get<IApod>(`${this.apiBaseUrl}/today`).pipe(
+    return this.http.get<IApod>(`${this.apiBaseUrl}/today/`).pipe(
       tap(out => console.log(`Apod today ${JSON.stringify(out)}`)),
       catchError(this.handleError)
     );

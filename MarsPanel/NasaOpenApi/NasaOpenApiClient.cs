@@ -42,11 +42,11 @@ namespace MarsPanel.NasaOpenApi
             return result;
         }
 
-        public async Task<string> GetApod()
+        public async Task<string> GetApod(string apikey)
         {
             string result;
             string baseUrl = _restClient.BaseAddress.ToString() + _settings.Apod.BaseEndPoint;
-            string url = QueryHelpers.AddQueryString(baseUrl, "api_key", _settings.ApiKey);
+            string url = QueryHelpers.AddQueryString(baseUrl, "api_key", apikey);
 
             HttpResponseMessage response = await _restClient.GetAsync(url);
 

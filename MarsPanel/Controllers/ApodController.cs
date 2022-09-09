@@ -15,10 +15,10 @@ namespace MarsPanel.Controllers
             _nasaOpenApiClient = nasaOpenApiClient;
         }
 
-        [HttpGet("today")]
-        public async Task<IActionResult> Get()
+        [HttpGet("today/{apikey}")]
+        public async Task<IActionResult> Get(string apikey)
         {
-            string result = await _nasaOpenApiClient.GetApod();
+            string result = await _nasaOpenApiClient.GetApod(apikey);
             ApodResponse apod = ApodDeserialize.Process(result);
             return Ok(apod);
         }

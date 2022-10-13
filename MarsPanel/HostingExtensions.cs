@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using MarsPanel.NasaOpenApi;
 using MarsPanel.MarsNasa;
 using MarsPanel.NasaOpenApi.Models;
+using System.Text.Json.Serialization;
 
 namespace MarsPanel
 {
@@ -18,7 +19,9 @@ namespace MarsPanel
             builder.Services.Configure<GenericEndpointSettings>(builder.Configuration.GetSection("Curiosity"));
             builder.Services.AddNasaOpenApi(builder.Configuration);
             builder.Services.AddMarsNasaApi(builder.Configuration);
-            builder.Services.AddControllers().AddNewtonsoftJson();
+            builder.Services.AddControllers().AddJsonOptions(options =>
+               options.JsonSerializerOptions.PropertyNamingPolicy = null);
+      
             builder.Services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
